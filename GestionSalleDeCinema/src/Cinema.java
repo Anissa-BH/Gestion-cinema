@@ -2,84 +2,76 @@ import java.util.Scanner;
 
 public class Cinema {
 	
-	static Film[] listeFilm;
-	static Seance[] listeSeance;
-	static Salle[] listeSalle;
+  static Film[] listeFilm;
+  static Seance[] listeSeance;
+  static Salle[] listeSalle;
 
-	static int nombreFilm=0; 
-	static int nombreSeance=0;
-	static int nombreSalle=0; 
+  static int nombreFilm=0; 
+  static int nombreSeance=0;
+  static int nombreSalle=0; 
 	
     public Cinema() {}
   
-	public static void afficherLesFilms() {
-		System.out.println("----------------------");
-		for(int i=0;i<nombreFilm;i++)
-			System.out.println(listeFilm[i].getTitre()+"\n");
-	}
+    public static void afficherLesFilms() {
+      System.out.println("----------------------");
+      for(int i=0;i<nombreFilm;i++)
+      System.out.println(listeFilm[i].getTitre()+"\n");
+    }
 	
-	public void ajouterFilm(){
-		
-		Film film=new Film(); 
-		
-		Scanner scr=new Scanner(System.in);
-		System.out.println("Enter le Titre du film");
-		film.setTitre(scr.nextLine());
-		System.out.println("Enter le nom du réalisateur");
-		film.setNomRealisateur(scr.nextLine());
-		System.out.println("Enter l'année de réalisation");
-		film.setAnneeRealisation(scr.nextInt());
-		System.out.print("Enter la déscription");
-		film.setDescription(scr.nextLine());
-		
-		listeFilm[nombreFilm++]=film;
-		System.out.println("le nombre des film est "+nombreFilm +"\n");
-		
-		System.out.println( "Le film <<"+ film.getTitre() +">> A été bien ajouter ! ");
-		
-		}
+    public void ajouterFilm(){
+      Film film=new Film(); 
+      Scanner scr=new Scanner(System.in);
+      System.out.println("Enter le Titre du film");
+      film.setTitre(scr.nextLine());
+      System.out.println("Enter le nom du réalisateur");
+      film.setNomRealisateur(scr.nextLine());
+      System.out.println("Enter l'année de réalisation");
+      film.setAnneeRealisation(scr.nextInt());
+      System.out.print("Enter la déscription");
+      film.setDescription(scr.nextLine());
+      listeFilm[nombreFilm++]=film;
+      System.out.println("le nombre des film est "+nombreFilm +"\n");
+      System.out.println( "Le film <<"+ film.getTitre() +">> A été bien ajouter ! ");
+    }
 	
-	public void modifierFilm() {
-		
-		Scanner sc=new Scanner(System.in);
-		System.out.println("Enter le nom du film à modifier");
-		String nomDuFilmArechercher=sc.nextLine();
-		
-		for(int i=0;i<listeFilm.length;i++)
-		  if(listeFilm[i].getTitre().equals(nomDuFilmArechercher))
-			{  	
-			  System.out.println("Enter le Titre du film");
-			  listeFilm[i].setTitre(sc.nextLine());
-			  System.out.println("Enter le nom du réalisateur");
-			  listeFilm[i].setNomRealisateur(sc.nextLine());
-			  System.out.println("Enter l'année de réalisation");
-			  listeFilm[i].setAnneeRealisation(sc.nextInt());
-			  System.out.println("Enter la déscription");
-			  listeFilm[i].setDescription(sc.nextLine());
-			  break;
-			}
-			else
-			  System.out.println("Le que vous souhaitez modifier n'existe pas");
-	}
+    public void modifierFilm() {
+      Scanner sc=new Scanner(System.in);
+      System.out.println("Enter le nom du film à modifier");
+      String nomDuFilmArechercher=sc.nextLine();
+      for(int i=0;i<listeFilm.length;i++)
+      if(listeFilm[i].getTitre().equals(nomDuFilmArechercher))
+      {  	
+        System.out.println("Enter le Titre du film");
+        listeFilm[i].setTitre(sc.nextLine());
+        System.out.println("Enter le nom du réalisateur");
+	listeFilm[i].setNomRealisateur(sc.nextLine());
+	System.out.println("Enter l'année de réalisation");
+	listeFilm[i].setAnneeRealisation(sc.nextInt());
+	System.out.println("Enter la déscription");
+	listeFilm[i].setDescription(sc.nextLine());
+	break;
+      }
+      else
+        System.out.println("Le que vous souhaitez modifier n'existe pas");
+    }
 	
-	public static void supprimerFilm() {
-	  Scanner s=new Scanner(System.in);
-	  System.out.println("Entrer le Nom du film à supprimer ");
-	  String TitreFilmAsupprimer=s.nextLine();
-	  for(int i=0;i<listeFilm.length;i++)
-	   { 
-		  if(listeFilm[i].getTitre().equals(TitreFilmAsupprimer))
-			{
-			  listeFilm[i]=listeFilm[i+1];
-			  nombreFilm--;
-			  System.out.println("Film supprimer");
-			  break;
-			}
-		  else	
-		    System.out.println("Ce film n'esxiste pas");
-		
-	   }
-	}
+    public static void supprimerFilm() {
+      Scanner s=new Scanner(System.in);
+      System.out.println("Entrer le Nom du film à supprimer ");
+      String TitreFilmAsupprimer=s.nextLine();
+      for(int i=0;i<listeFilm.length;i++)
+      { 
+        if(listeFilm[i].getTitre().equals(TitreFilmAsupprimer))
+	  {
+	    listeFilm[i]=listeFilm[i+1];
+	    nombreFilm--;
+	    System.out.println("Film supprimer");
+	    break;
+	  }
+        else	
+          System.out.println("Ce film n'esxiste pas");
+	  }
+    }
 	
 	public int rechercherFilm() {
 	  System.out.println("Entrer le nom du film à rechercher ");
